@@ -11,7 +11,9 @@ import openai
 import speech_recognition as sr
 
 class language_model:
-    def __init__(self):
+    def __init__(self, secret_key):
+
+        self.secret_key = secret_key
 
         self.pre_prompt_1 = ("Here are instructions I want you to follow for the next prompt.\n"+
                              "1. Try and detect the words 'hello robot', it may be slightly misspeled.\n"+
@@ -27,7 +29,7 @@ class language_model:
                              "Example: 'heya uh what is the blue and long pole that is in Canada with uh heluh helllo robot. I have a bottle of water with a blue ribbon and a red cap on top.' turns into 'bottle of water, blue ribbon, red cap on top'")
     
     def run_model_text(self, pre_prompt, prompt):
-        openai.api_key = "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"
+        openai.api_key = self.secret_key
         
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
