@@ -63,11 +63,15 @@ class object_finder:
 
         for mask in sorted_masks:
             x, y, width, height = mask['bbox']
+            
             cropped_frame = frame[y:y+height, x:x+width]
+            
+            cropped_frame = cv2.cvtColor(cropped_frame, cv2.COLOR_BGR2GRAY)  # Convert mask to 3 channels
+
             mask_binary = (mask['segmentation'][y:y+height, x:x+width] > 0).astype(np.uint8) * 255
-            mask_binary = cv2.cvtColor(mask_binary, cv2.COLOR_GRAY2BGR)  # Convert mask to 3 channels
+            
             cropped_frame = cv2.bitwise_and(cropped_frame, mask_binary)
             cropped_objects.append(cropped_frame)
 
-        return cropped_objects
+        return cropped_objects # list of 1 channel grayscale frames
 
