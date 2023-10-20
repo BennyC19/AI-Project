@@ -22,19 +22,4 @@ cropped_objects = object_finding_ai.isolate_objects(frame, masks)
 
 for cropped_frame in cropped_objects:
     plt.imshow(cropped_frame)
-    plt.show()
-
-"""
-microphone = microphone_access()
-microphone.ambient_noise_calculator()
-
-robot = language_model(secret_key)
-
-message = microphone.record_message()
-
-transcribed = robot.transcribe(message)
-
-print(transcribed)
-
-print(robot.extract_text(robot.run_model_text(robot.pre_prompt_2, transcribed)))
-"""
+    plt.show()    
