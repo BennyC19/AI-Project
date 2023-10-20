@@ -1,9 +1,6 @@
 import pyaudio
-import wave 
 import time
 import numpy as np
-import wave
-import io
 from scipy.signal import find_peaks
 
 # use webrtcvad in the future. This method works for now but may need to be updated.
